@@ -1,0 +1,1 @@
+# Portuguese conjugation tables
