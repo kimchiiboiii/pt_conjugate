@@ -1,44 +1,67 @@
+from flask import Flask, render_template, request
 from mlconjug3 import Conjugator
 from mlconjug3 import ConjugManager 
-import os
+# import os
 import json
+
+# conjugator = Conjugator(language='pt')
+# verb = conjugator.conjugate('falar')
+# print(verb["Indicativo"]["Indicativo Futuro do Presente Simples"])
+# verb_indicativo =   {
+
+
+
+app = Flask(__name__)
+
+
 
 
 # https://mlconjug3.readthedocs.io/en/latest/readme.html
 
 
-conjugator = Conjugator(language='pt')
-conjug_manage = ConjugManager(language='pt')
+
+@app.route("/", methods=["GET", "POST"])
+def index():
+    verb_indicativo = None
+    if request.method == "POST":
+        received_verb = request.form.get("inputWord")
+        conjugator = Conjugator(language='pt')
+        verb = conjugator.conjugate(received_verb)
+
+        verb_indicativo =   {
+            "Verbo": received_verb,
+            "Indicativo presente": verb["Indicativo"]["Indicativo presente"],
+            "Indicativo preterito perfeito simples": verb["Indicativo"]["Indicativo pretérito perfeito simples"],
+            "Indicativo preterito imperfeito": verb["Indicativo"]["Indicativo pretérito imperfeito"],
+            "Indicativo futuro do presente": verb["Indicativo"]["Indicativo Futuro do Presente Simples"]
+    }
+        
+    
+    
+
+    return render_template('index.html', verb_indicativo=verb_indicativo)
+ 
 
 
-# Getting the conjugations I want for the verb
-# Later on verb will receive the user input from website
-received_verb = "falar"
-verb = conjugator.conjugate(received_verb)
-# verb_indcativo_presente = verb["Indicativo"]["Indicativo presente"]
 
-# verb_indicativo_perfeito = verb["Indicativo"]["Indicativo pretérito perfeito simples"] 
 
-# verb_indicativo_imperfito = verb["Indicativo"]["Indicativo pretérito imperfeito"]
+# conjug_manage = ConjugManager(language='pt')
 
-verb_indicativo = {
-    "Verbo": received_verb,
-    "Indicativo presente": verb["Indicativo"]["Indicativo presente"],
-    "Indicativo preterito perfeito simples": verb["Indicativo"]["Indicativo pretérito perfeito simples"],
-    "Indicativo preterito imperfeito": verb["Indicativo"]["Indicativo pretérito imperfeito"]
-}
+
+@app.route("/json")
+def send_json():
+    data = verb_indicativo
+    return json.dumps(data, ensure_ascii=False, indent=4)
+# testing out how to send and get data to and from the server
+
+# response = requests.get("http://localhost:5000/json")
+# print(response.json())
 
 
 
 
 # Trying to write the required conjugations to a json file
 # So I can later send it to my website to be used in the conjugation table
-with open("falar_conjugs.json", "w", encoding="utf-8") as localfile:
-    json.dump(verb_indicativo, localfile, ensure_ascii=False, indent=4)
-
-
-
-# print(os.getcwd())
-# basedir = os.path.abspath(os.path.dirname(__file__))
-# falar_table_path = f"{basedir}/falar_table.json"
+# with open("falar_conjugs.json", "w", encoding="utf-8") as localfile:
+#     json.dump(verb_indicativo, localfile, ensure_ascii=False, indent=4)
 

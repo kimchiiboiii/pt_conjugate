@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Conjugations</title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
 
 
 
@@ -13,6 +13,8 @@
 
 
 <body>
+ 
+<div id="backgroundPicture">
     
     <div class="topHeader">
         <h1>Conjugations</h1>
@@ -22,33 +24,86 @@
     <div id="bodyWrap">
 
         <div class="formWrap">
-
             <form action="" method="post" class="wordForm">
                 <div class="formGroup">
-                    
-                    <input type="text" name="word" id="word"> <br>
+                    <input type="text" name="inputWord" id="word"> <br>
                     <label for="word">Enter a word:</label>
-                    
-
-                    
-                
-                
                 </div>
-                
-
-
-
-
-
-
-
-
         </div>
+        
+        
+        <div class="conjugationsResults">
+            <div>
+                <h2>{{verb_indicativo["Verbo"] }}</h2>
+            </div>
+            
+            
+            <div>
+                <h2>Present</h2>
+                <div id="presentResults" class="{% if verb_indicativo and 
+                verb_indicativo['Indicativo presente'] %}filled{% endif %}">
+                    {% if verb_indicativo and verb_indicativo['Indicativo presente'] %}
+                        {% for key, value in verb_indicativo["Indicativo presente"].items() %}
+                            <p><strong>{{ key }}:</strong> {{ value }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+            
+            
+            <div>
+                <h2>Past Perfect</h2>
+                <div id="perfectResults" class="{% if verb_indicativo and 
+                    verb_indicativo['Indicativo preterito perfeito simples'] %}filled{% endif %}">
+                    {% if verb_indicativo and verb_indicativo['Indicativo preterito perfeito simples'] %}
+                        {% for key, value in verb_indicativo["Indicativo preterito perfeito simples"].items() %}
+                            <p><strong>{{ key }}:</strong> {{ value }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+            
+            
+            
+            <div>
+                <h2>Past Imperfect</h2>
+                <div id="imperfectResults" class="{% if verb_indicativo and 
+                verb_indicativo['Indicativo preterito imperfeito'] %}filled{% endif %}">
+                    {% if verb_indicativo and verb_indicativo['Indicativo preterito imperfeito'] %}
+                        {% for key, value in verb_indicativo["Indicativo preterito imperfeito"].items() %}
+                            <p><strong>{{ key }}:</strong> {{ value }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+
+
+            <div>
+                <h2>Future</h2>
+                <div id="futureResults" class="{% if verb_indicativo 
+                and verb_indicativo['Indicativo futuro do presente'] %}filled{% endif %}">
+                    {% if verb_indicativo and verb_indicativo['Indicativo futuro do presente'] %}
+                        {% for key, value in verb_indicativo["Indicativo futuro do presente"].items() %}
+                            <p><strong>{{ key }}:</strong> {{ value }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        
+        
+        </div>
+
+
+    
     
 
 
     </div>
 
+    <div class="footer"></div>
+
+
+</div>
 </body>
 
 

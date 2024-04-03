@@ -1,9 +1,39 @@
+/* #backgroundPicture::before {
+    content: ""; 
+    z-index: -1; 
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-image: inherit;
+    background-size: cover;
+    
+}
+
+
+
+#backgroundPicture {
+    position: relative;
+    display: block;
+    height: 100%; 
+    width: 100%; 
+    background-repeat: no-repeat;
+    background-image: url("/static/rio-de-janeiro-wallpaper.jpg");
+    z-index: 1;
+} */
+
+
+
+
 .topHeader{
 
     display: grid;
     grid-template-rows: 1fr 1fr;
     justify-items: center;
     align-items: center;
+    background-color: #0d1b1e;
+    border: 5px solid #e8dcb9;
 
 }
 
@@ -12,17 +42,28 @@
     
 }
 
+
+
 #bodyWrap{
 
     display: grid;
     justify-items: center;
     align-items: center;
     width: 100%;
-    height: 60dvh;
+    height: 100%;
+    background-color: #0d1b1e;
 
 
 }
 
+
+
+
+.formWrap{
+
+    margin-top: 5rem;
+    padding: 2rem;
+}
 
 .wordForm{
 
@@ -35,5 +76,62 @@
 .formGroup label{
     margin-left: 2.4rem;
    
+
+}
+
+
+.conjugationsResults{
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-top: 5rem;
+    
+    width: 60%;
+    height: 100%;
+    border: 5px solid #e8dcb9;
+    background-color: #7798AB;
+    
+}
+
+.conjugationsResults > div:first-child{
+
+    grid-column: span 3;
+
+}
+
+
+.conjugationsResults div{
+
+    text-align: center;
+    background-color: #7798AB;
+    /* border: 3px solid #e8dcb9; */
+    padding: 2.5rem;
+    font-size: 20px;
+    
+
+}
+
+.conjugationsResults div:last-child{
+
+    grid-column: 2;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+
+
+}
+
+.filled{
+
+    border: 3px solid #e8dcb9;
+
+}
+
+.footer{
+
+    text-align: center;
+    margin-top: 3rem;
+    width: 100%;
+    height: 20dvh;
+
 
 }
