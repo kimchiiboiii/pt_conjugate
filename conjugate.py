@@ -20,8 +20,12 @@ app = Flask(__name__)
 
 
 
-@app.route("/", methods=["GET", "POST"])
+@app.route("/")
 def index():
+    return render_template('index.html')
+
+@app.route('/conjugate', methods=['GET', 'POST'])
+def home():
     verb_indicativo = None
     if request.method == "POST":
         received_verb = request.form.get("inputWord")
@@ -39,10 +43,23 @@ def index():
     
     
 
-    return render_template('index.html', verb_indicativo=verb_indicativo)
+    return render_template('conjugate.html', verb_indicativo=verb_indicativo)
  
 
+@app.route('/conjugate/<clicked_verb>')
+def conjugate(clicked_verb):
+    conjugator = Conjugator(language='pt')
+    verb = conjugator.conjugate(clicked_verb)
 
+    verb_indicativo = {
+        "Verbo": clicked_verb,
+        "Indicativo presente": verb["Indicativo"]["Indicativo presente"],
+        "Indicativo preterito perfeito simples": verb["Indicativo"]["Indicativo pretérito perfeito simples"],
+        "Indicativo preterito imperfeito": verb["Indicativo"]["Indicativo pretérito imperfeito"],
+        "Indicativo futuro do presente": verb["Indicativo"]["Indicativo Futuro do Presente Simples"]
+    }
+
+    return render_template('conjugate.html', verb_indicativo=verb_indicativo)
 
 
 # conjug_manage = ConjugManager(language='pt')

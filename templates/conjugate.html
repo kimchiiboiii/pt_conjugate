@@ -36,7 +36,7 @@
         
         <div class="conjugationsResults">
             <div>
-                <h2>Verbo</h2>
+                <h2>{{verb_indicativo["Verbo"] }}</h2>
             </div>
             
             
@@ -44,7 +44,11 @@
                 <h2>Present</h2>
                 <div id="presentResults" class="{% if verb_indicativo and 
                 verb_indicativo['Indicativo presente'] %}filled{% endif %}">
-                    
+                    {% if verb_indicativo and verb_indicativo['Indicativo presente'] %}
+                        {% for key, value in verb_indicativo["Indicativo presente"].items() %}
+                            <p><strong>{{ key }}:</strong> {{ value }}</p>
+                        {% endfor %}
+                    {% endif %}
                 </div>
             </div>
             
@@ -53,7 +57,11 @@
                 <h2>Past Perfect</h2>
                 <div id="perfectResults" class="{% if verb_indicativo and 
                     verb_indicativo['Indicativo preterito perfeito simples'] %}filled{% endif %}">
-                    
+                    {% if verb_indicativo and verb_indicativo['Indicativo preterito perfeito simples'] %}
+                        {% for key, value in verb_indicativo["Indicativo preterito perfeito simples"].items() %}
+                            <p><strong>{{ key }}:</strong> {{ value }}</p>
+                        {% endfor %}
+                    {% endif %}
                 </div>
             </div>
             
@@ -63,7 +71,11 @@
                 <h2>Past Imperfect</h2>
                 <div id="imperfectResults" class="{% if verb_indicativo and 
                 verb_indicativo['Indicativo preterito imperfeito'] %}filled{% endif %}">
-                    
+                    {% if verb_indicativo and verb_indicativo['Indicativo preterito imperfeito'] %}
+                        {% for key, value in verb_indicativo["Indicativo preterito imperfeito"].items() %}
+                            <p><strong>{{ key }}:</strong> {{ value }}</p>
+                        {% endfor %}
+                    {% endif %}
                 </div>
             </div>
 
@@ -72,7 +84,11 @@
                 <h2>Future</h2>
                 <div id="futureResults" class="{% if verb_indicativo 
                 and verb_indicativo['Indicativo futuro do presente'] %}filled{% endif %}">
-                    
+                    {% if verb_indicativo and verb_indicativo['Indicativo futuro do presente'] %}
+                        {% for key, value in verb_indicativo["Indicativo futuro do presente"].items() %}
+                            <p><strong>{{ key }}:</strong> {{ value }}</p>
+                        {% endfor %}
+                    {% endif %}
                 </div>
             </div>
         
