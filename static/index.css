@@ -4,9 +4,10 @@
 
 .topHeader{
 
-    display: grid;
-    grid-template-rows: 1fr 1fr;
-    justify-items: center;
+    display: flex;
+    /* grid-template-rows: 1fr 1fr; */
+    /* column-gap: 66rem; */
+    justify-content: start;
     align-items: center;
     background-color: #009b03;
     border: 3px solid #8e7201;
@@ -14,12 +15,55 @@
 
 }
 
-.topHeader h3{
-    margin-top: 3rem;
+.topHeader h1{
+    /* margin-top: 3rem; */
+    flex-grow: 0.95;
+    flex-basis: max-content; 
+    text-align: center;
+    
     
 }
 
+.topHeader img{
+    
+    margin-left: 2rem;
 
+}
+
+.dropdown{
+
+    position: relative;
+    display: inline-block
+}
+
+.dropdown-content{
+
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+
+}
+
+.dropdown-content a{
+
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    margin-right: 2rem;
+    
+
+}
+
+.dropdown:hover .dropdown-content{
+
+    display: block;
+
+}
 
 #bodyWrap{
 
