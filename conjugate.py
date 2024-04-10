@@ -65,6 +65,33 @@ def conjugate(clicked_verb):
 # conjug_manage = ConjugManager(language='pt')
 
 
+@app.route('/pt')
+def home_pt():
+        return render_template('pt-index.html')
+
+@app.route('/conjugar', methods=['GET', 'POST'])
+def conjugate_pt():
+     indicative_verb = None
+     if request.method == "POST":
+        received_verb = request.form.get("inputWord")
+        conjugator = Conjugator(language='en')
+        verb = conjugator.conjugate(received_verb)
+
+        indicative_verb =   {
+             "Verbo": received_verb,
+             "Indicativo presente": verb["indicative"]["indicative present"],
+             "Indicativo preterito perfeito simples": verb["indicative"]["indicative past tense"],
+             "Indicativo preterito imperfeito": verb["indicative"]["indicative present continuous"],
+             "Indicativo futuro do presente": verb["indicative"]["indicative present perfect"]
+        }
+
+        return render_template('pt-conjugate.html', indicative_verb=indicative_verb)
+
+
+
+
+
+
 @app.route("/json")
 def send_json():
     data = verb_indicativo
