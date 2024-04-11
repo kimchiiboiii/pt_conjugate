@@ -47,7 +47,7 @@ def home():
  
 
 @app.route('/conjugate/<clicked_verb>')
-def conjugate(clicked_verb):
+def link(clicked_verb):
     conjugator = Conjugator(language='pt')
     verb = conjugator.conjugate(clicked_verb)
 
@@ -88,7 +88,20 @@ def conjugate_pt():
         return render_template('pt-conjugate.html', indicative_verb=indicative_verb)
 
 
+@app.route('/conjugar/<clicked_verb>')
+def link_pt(clicked_verb):
+    conjugator = Conjugator(language='en')
+    verb = conjugator.conjugate(clicked_verb)
 
+    indicative_verb = {
+        "Verbo": clicked_verb,
+        "Indicativo presente": verb["indicative"]["indicative present"],
+        "Indicativo preterito perfeito simples": verb["indicative"]["indicative past tense"],
+        "Indicativo preterito imperfeito": verb["indicative"]["indicative present continuous"],
+        "Indicativo futuro do presente": verb["indicative"]["indicative present perfect"]
+    }
+
+    return render_template('pt-conjugate.html', indicative_verb=indicative_verb)
 
 
 

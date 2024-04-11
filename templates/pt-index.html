@@ -20,7 +20,7 @@
         <div class="dropdown">
             <img src="{{ url_for('static', filename='brazil_icon.png') }}" alt="language icon" width="100" height="65">
             <div class="dropdown-content">
-                <a href="{{ url_for('home_pt') }}"><img src="{{ url_for('static', filename='english_flag.png') }}"></a>
+                <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='english_flag.png') }}" alt="english icon" width="100" height="65"></a>
             </div>
         </div>
         <h1>Conjugações</h1>
@@ -57,7 +57,7 @@
             
             
             <div>
-                <h2>Past Perfect</h2>
+                <h2>Pretérito Perfeito</h2>
                 <div id="perfectResults" class="{% if indicative_verb and 
                     indicative_verb['Indicativo preterito perfeito simples'] %}filled{% endif %}">
                     
@@ -67,7 +67,7 @@
             
             
             <div>
-                <h2>Past Imperfect</h2>
+                <h2>Gerúndio</h2>
                 <div id="imperfectResults" class="{% if indicative_verb and 
                 indicative_verb['Indicativo preterito imperfeito'] %}filled{% endif %}">
                     
@@ -76,7 +76,7 @@
 
 
             <div>
-                <h2>Future</h2>
+                <h2>Futuro</h2>
                 <div id="futureResults" class="{% if indicative_verb 
                 and indicative_verb['Indicativo futuro do presente'] %}filled{% endif %}">
                     
@@ -97,28 +97,28 @@
             <div class="commonVerbListWrap">
                 <ul class="verbList">
                     
-                    <li><a href="{{ url_for('conjugate', clicked_verb='ter') }}">ter</a></li>
-                    <li><a href="{{ url_for('conjugate', clicked_verb='ver') }}">ver</a></li>
-                    <li><a href="{{ url_for('conjugate', clicked_verb='vir') }}">vir</a></li>
-                    <li><a href="{{ url_for('conjugate', clicked_verb='pôr') }}">pôr</a></li>
+                    <li><a href="{{ url_for('link_pt', clicked_verb='have') }}">have</a></li>
+                    <li><a href="{{ url_for('link_pt', clicked_verb='see') }}">see</a></li>
+                    <li><a href="{{ url_for('link_pt', clicked_verb='come') }}">come</a></li>
+                    <li><a href="{{ url_for('link_pt', clicked_verb='give') }}">give</a></li>
                     
                 </ul>
 
                 <ul class="verbList">
                     
-                    <li><a href="{{ url_for('conjugate', clicked_verb='estar') }}">estar</a></li>
-                    <li><a href="{{ url_for('conjugate', clicked_verb='haver') }}">haver</a></li>
-                    <li><a href="{{ url_for('conjugate', clicked_verb='saber') }}">saber</a></li>
-                    <li><a href="{{ url_for('conjugate', clicked_verb='dar') }}">dar</a></li>
+                    <li><a href="{{ url_for('link_pt', clicked_verb='be') }}">be</a></li>
+                    <li><a href="{{ url_for('link_pt', clicked_verb='fight') }}">fight</a></li>
+                    <li><a href="{{ url_for('link_pt', clicked_verb='know') }}">know</a></li>
+                    <li><a href="{{ url_for('link_pt', clicked_verb='take') }}">take</a></li>
                     
                 </ul>
 
                 <ul class="verbList">
                     
-                    <li><a href="{{ url_for('conjugate', clicked_verb='ser') }}">ser</a></li>
-                    <li><a href="{{ url_for('conjugate', clicked_verb='poder') }}">poder</a></li>
-                    <li><a href="{{ url_for('conjugate', clicked_verb='fazer') }}">fazer</a></li>
-                    <li><a href="{{ url_for('conjugate', clicked_verb='ir') }}">ir</a></li> 
+                    <li><a href="{{ url_for('link_pt', clicked_verb='ser') }}">do</a></li>
+                    <li><a href="{{ url_for('link_pt', clicked_verb='can') }}">can</a></li>
+                    <li><a href="{{ url_for('link_pt', clicked_verb='make') }}">make</a></li>
+                    <li><a href="{{ url_for('link_pt', clicked_verb='go') }}">go</a></li> 
                     
                 </ul>
 
