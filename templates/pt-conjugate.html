@@ -75,11 +75,11 @@
             
             
             <div>
-                <h2>Gerúndio</h2>
+                <h2>Pretérito Imperfeito</h2>
                 <div id="imperfectResults" class="{% if indicative_verb and 
-                indicative_verb['Indicativo preterito imperfeito'] %}filled{% endif %}">
-                    {% if indicative_verb and indicative_verb['Indicativo preterito imperfeito'] %}
-                        {% for key, value in indicative_verb["Indicativo preterito imperfeito"].items() %}
+                indicative_verb['Indicativo preterito perfeito simples'] %}filled{% endif %}">
+                    {% if indicative_verb and indicative_verb['Indicativo preterito perfeito simples'] %}
+                        {% for key, value in indicative_verb['Indicativo preterito perfeito simples'].items() %}
                             <p><strong>{{ key }}:</strong> {{ value }}</p>
                         {% endfor %}
                     {% endif %}

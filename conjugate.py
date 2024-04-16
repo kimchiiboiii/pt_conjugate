@@ -4,10 +4,6 @@ from mlconjug3 import ConjugManager
 # import os
 import json
 
-# conjugator = Conjugator(language='pt')
-# verb = conjugator.conjugate('falar')
-# print(verb["Indicativo"]["Indicativo Futuro do Presente Simples"])
-# verb_indicativo =   {
 
 
 
@@ -62,7 +58,7 @@ def link(clicked_verb):
     return render_template('conjugate.html', verb_indicativo=verb_indicativo)
 
 
-# conjug_manage = ConjugManager(language='pt')
+
 
 
 @app.route('/pt')
@@ -81,7 +77,7 @@ def conjugate_pt():
              "Verbo": received_verb,
              "Indicativo presente": verb["indicative"]["indicative present"],
              "Indicativo preterito perfeito simples": verb["indicative"]["indicative past tense"],
-             "Indicativo preterito imperfeito": verb["indicative"]["indicative present continuous"],
+             "Indicativo preterito imperfeito": verb["indicative"]["indicative past tense"],
              "Indicativo futuro do presente": verb["indicative"]["indicative present perfect"]
         }
 
@@ -103,22 +99,5 @@ def link_pt(clicked_verb):
 
     return render_template('pt-conjugate.html', indicative_verb=indicative_verb)
 
-
-
-@app.route("/json")
-def send_json():
-    data = verb_indicativo
-    return json.dumps(data, ensure_ascii=False, indent=4)
-# testing out how to send and get data to and from the server
-
-# response = requests.get("http://localhost:5000/json")
-# print(response.json())
-
-
-
-
-# Trying to write the required conjugations to a json file
-# So I can later send it to my website to be used in the conjugation table
-# with open("falar_conjugs.json", "w", encoding="utf-8") as localfile:
-#     json.dump(verb_indicativo, localfile, ensure_ascii=False, indent=4)
-
+if __name__ == '__main__':
+    app.run(host='0.0.0.0')
