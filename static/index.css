@@ -20,6 +20,7 @@
     flex-grow: 0.95;
     flex-basis: max-content; 
     text-align: center;
+    margin-right: 2.5rem;
     
     
 }
@@ -72,7 +73,7 @@
     align-items: center;
     width: 100%;
     height: 100%;
-    background-color: #303436;
+    /* background-color: #303436; */
 
 
 }
@@ -92,6 +93,7 @@
     display: grid;
     grid-template-rows: 1fr 1fr;
     justify-content: center;
+    
 
 }
 
@@ -100,6 +102,7 @@
     display: grid;
     width: 30rem;
     justify-content: center;
+    align-items: center;
 
 
 }
@@ -107,7 +110,7 @@
 .formGroup label{
    text-align: center;
     margin-top: 2rem;
-    font-size: 25px;
+    font-size: 1.3rem;
     font-family: "Jost", sans-serif;
 
 }
@@ -115,7 +118,7 @@
 
 #word{
 
-    width: 15rem;
+    width: 20rem;
     height: 2dvh;
 
 
@@ -126,13 +129,22 @@
 
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 2em;
+   
     /* margin-top: 0.5rem; */
     
-    width: 60%;
+    width: 80%;
     height: 100%;
     border: 5px solid #8e7201;
     background-color: #181a1b;
-    
+    color: #FFFFFF;
+}
+
+
+
+.conjugationsResults h2{
+
+    font-size: 1.5dvw;
 }
 
 .conjugationsResults > div:first-child{
@@ -147,11 +159,12 @@
     text-align: center;
     background-color: #181a1b;
     /* border: 3px solid #e8dcb9; */
-    padding: 2rem;
-    font-size: 25px;
+    padding: 2em;
+    /* font-size: 1.3rem; */
     font-family: "Jost", sans-serif;
-    margin-left: 1rem;
-    margin-right: 1rem;
+    margin-left: 1em;
+    margin-right: 1em;
+    
     
 
 }
@@ -168,8 +181,19 @@
 .filled{
 
     border: 3px solid #8e7201;
+    /* font-size: 2vh; */
 
 }
+
+.filled p{
+
+    font-size: 1vw;
+    font-family: "Jost", sans-serif;
+    
+
+}
+
+
 
 .footer{
     
@@ -207,7 +231,7 @@
     text-align: center;
     justify-items: center;
     align-items: center;
-    font-size: 40px;
+    font-size: 3dvh;
     font-family: "Jost", sans-serif;
 
 

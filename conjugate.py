@@ -16,6 +16,10 @@ app = Flask(__name__)
 
 
 
+
+
+# Conjugations for English speakers learning Portuguese
+
 @app.route("/")
 def index():
     return render_template('index.html')
@@ -60,6 +64,8 @@ def link(clicked_verb):
 
 
 
+
+# Conjugations for Portuguese speakers learning English
 
 @app.route('/pt')
 def home_pt():
