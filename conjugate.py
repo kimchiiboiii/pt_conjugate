@@ -8,6 +8,7 @@ import json
 
 
 app = Flask(__name__)
+conjugator = Conjugator(language='pt')
 
 
 
@@ -29,15 +30,16 @@ def home():
     verb_indicativo = None
     if request.method == "POST":
         received_verb = request.form.get("inputWord")
-        conjugator = Conjugator(language='pt')
+        # conjugator = Conjugator(language='pt')
         verb = conjugator.conjugate(received_verb)
 
+        indicativo = verb["Indicativo"]
         verb_indicativo =   {
             "Verbo": received_verb,
-            "Indicativo presente": verb["Indicativo"]["Indicativo presente"],
-            "Indicativo preterito perfeito simples": verb["Indicativo"]["Indicativo pretérito perfeito simples"],
-            "Indicativo preterito imperfeito": verb["Indicativo"]["Indicativo pretérito imperfeito"],
-            "Indicativo futuro do presente": verb["Indicativo"]["Indicativo Futuro do Presente Simples"]
+            "Indicativo presente": indicativo["Indicativo"]["Indicativo presente"],
+            "Indicativo preterito perfeito simples": indicativo["Indicativo"]["Indicativo pretérito perfeito simples"],
+            "Indicativo preterito imperfeito": indicativo["Indicativo"]["Indicativo pretérito imperfeito"],
+            "Indicativo futuro do presente": indicativo["Indicativo"]["Indicativo Futuro do Presente Simples"]
     }
         
     
@@ -48,15 +50,15 @@ def home():
 
 @app.route('/conjugate/<clicked_verb>')
 def link(clicked_verb):
-    conjugator = Conjugator(language='pt')
     verb = conjugator.conjugate(clicked_verb)
 
+    indicativo = verb["Indicativo"]
     verb_indicativo = {
         "Verbo": clicked_verb,
-        "Indicativo presente": verb["Indicativo"]["Indicativo presente"],
-        "Indicativo preterito perfeito simples": verb["Indicativo"]["Indicativo pretérito perfeito simples"],
-        "Indicativo preterito imperfeito": verb["Indicativo"]["Indicativo pretérito imperfeito"],
-        "Indicativo futuro do presente": verb["Indicativo"]["Indicativo Futuro do Presente Simples"]
+        "Indicativo presente": indicativo["Indicativo presente"],
+        "Indicativo preterito perfeito simples": indicativo["Indicativo pretérito perfeito simples"],
+        "Indicativo preterito imperfeito": indicativo["Indicativo pretérito imperfeito"],
+        "Indicativo futuro do presente": indicativo["Indicativo Futuro do Presente Simples"]
     }
 
     return render_template('conjugate.html', verb_indicativo=verb_indicativo)
@@ -76,15 +78,16 @@ def conjugate_pt():
      indicative_verb = None
      if request.method == "POST":
         received_verb = request.form.get("inputWord")
-        conjugator = Conjugator(language='en')
+        
         verb = conjugator.conjugate(received_verb)
 
+        indicative = verb["indicative"]
         indicative_verb =   {
              "Verbo": received_verb,
-             "Indicativo presente": verb["indicative"]["indicative present"],
-             "Indicativo preterito perfeito simples": verb["indicative"]["indicative past tense"],
-             "Indicativo preterito imperfeito": verb["indicative"]["indicative past tense"],
-             "Indicativo futuro do presente": verb["indicative"]["indicative present perfect"]
+             "Indicativo presente": indicative["indicative present"],
+             "Indicativo preterito perfeito simples": indicative["indicative past tense"],
+             "Indicativo preterito imperfeito": indicative["indicative past tense"],
+             "Indicativo futuro do presente": indicative["indicative present perfect"]
         }
 
         return render_template('pt-conjugate.html', indicative_verb=indicative_verb)
@@ -92,15 +95,17 @@ def conjugate_pt():
 
 @app.route('/conjugar/<clicked_verb>')
 def link_pt(clicked_verb):
-    conjugator = Conjugator(language='en')
+    
     verb = conjugator.conjugate(clicked_verb)
 
+    
+    indicative = verb["indicative"]
     indicative_verb = {
         "Verbo": clicked_verb,
-        "Indicativo presente": verb["indicative"]["indicative present"],
-        "Indicativo preterito perfeito simples": verb["indicative"]["indicative past tense"],
-        "Indicativo preterito imperfeito": verb["indicative"]["indicative present continuous"],
-        "Indicativo futuro do presente": verb["indicative"]["indicative present perfect"]
+        "Indicativo presente": indicative["indicative present"],
+        "Indicativo preterito perfeito simples": indicative["indicative past tense"],
+        "Indicativo preterito imperfeito": indicative["indicative present continuous"],
+        "Indicativo futuro do presente": indicative["indicative present perfect"]
     }
 
     return render_template('pt-conjugate.html', indicative_verb=indicative_verb)
