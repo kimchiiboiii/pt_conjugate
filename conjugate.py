@@ -8,9 +8,11 @@ import json
 
 
 app = Flask(__name__)
-conjugator = Conjugator(language='pt')
+conjugators = {
+    'pt': Conjugator(language='pt'),
+    'en': Conjugator(language='en')
 
-
+}
 
 
 # https://mlconjug3.readthedocs.io/en/latest/readme.html
@@ -30,7 +32,7 @@ def home():
     verb_indicativo = None
     if request.method == "POST":
         received_verb = request.form.get("inputWord")
-        # conjugator = Conjugator(language='pt')
+        conjugator = conjugators['pt']
         verb = conjugator.conjugate(received_verb)
 
         indicativo = verb["Indicativo"]
@@ -50,6 +52,7 @@ def home():
 
 @app.route('/conjugate/<clicked_verb>')
 def link(clicked_verb):
+    conjugator = conjugators['pt']
     verb = conjugator.conjugate(clicked_verb)
 
     indicativo = verb["Indicativo"]
@@ -71,6 +74,7 @@ def link(clicked_verb):
 
 @app.route('/pt')
 def home_pt():
+        
         return render_template('pt-index.html')
 
 @app.route('/conjugar', methods=['GET', 'POST'])
@@ -79,10 +83,11 @@ def conjugate_pt():
      if request.method == "POST":
         received_verb = request.form.get("inputWord")
         
+        conjugator = conjugators['en']
         verb = conjugator.conjugate(received_verb)
 
         indicative = verb["indicative"]
-        indicative_verb =   {
+        indicative_verb =  {
              "Verbo": received_verb,
              "Indicativo presente": indicative["indicative present"],
              "Indicativo preterito perfeito simples": indicative["indicative past tense"],
@@ -96,6 +101,7 @@ def conjugate_pt():
 @app.route('/conjugar/<clicked_verb>')
 def link_pt(clicked_verb):
     
+    conjugator = conjugators['en']
     verb = conjugator.conjugate(clicked_verb)
 
     
