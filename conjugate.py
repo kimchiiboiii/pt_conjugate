@@ -32,16 +32,17 @@ def home():
     verb_indicativo = None
     if request.method == "POST":
         received_verb = request.form.get("inputWord")
+        
         conjugator = conjugators['pt']
         verb = conjugator.conjugate(received_verb)
 
         indicativo = verb["Indicativo"]
         verb_indicativo =   {
             "Verbo": received_verb,
-            "Indicativo presente": indicativo["Indicativo"]["Indicativo presente"],
-            "Indicativo preterito perfeito simples": indicativo["Indicativo"]["Indicativo pretérito perfeito simples"],
-            "Indicativo preterito imperfeito": indicativo["Indicativo"]["Indicativo pretérito imperfeito"],
-            "Indicativo futuro do presente": indicativo["Indicativo"]["Indicativo Futuro do Presente Simples"]
+            "Indicativo presente": indicativo["Indicativo presente"],
+            "Indicativo preterito perfeito simples": indicativo["Indicativo pretérito perfeito simples"],
+            "Indicativo preterito imperfeito": indicativo["Indicativo pretérito imperfeito"],
+            "Indicativo futuro do presente": indicativo["Indicativo Futuro do Presente Simples"]
     }
         
     
